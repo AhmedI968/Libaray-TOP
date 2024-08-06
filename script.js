@@ -25,8 +25,9 @@ form.addEventListener('submit', (e) => {
     myLibrary.push(new Book(title, author, pages, read));
 
     currentIndex++;
-    closeDialog();
+    form.close();
     display();
+    console.log(myLibrary);
 });
 
 function Book(name, author, pages, read) {
@@ -41,9 +42,17 @@ function Book(name, author, pages, read) {
   }
 }
 
-function addBookToLibrary() {
-  
-}
+function removeBookFromLibrary(index) {
+    const bookIndex = myLibrary.findIndex(book => book.index === index);
+    if (bookIndex > -1) {
+        myLibrary.splice(bookIndex, 1);
+        // Adjust indices of remaining books
+        for (let i = bookIndex; i < myLibrary.length; i++) {
+            myLibrary[i].index = i;
+        }
+        display();
+    }
+};
 
 function display() {
     const library = document.querySelector('.library');
@@ -55,6 +64,14 @@ function display() {
         const card = document.createElement('div');
         card.className = 'book-card';
         
+        // Create and append delete button
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Delete';
+        deleteBtn.onclick = () => {
+            removeBookFromLibrary(book.index);
+        };
+        card.appendChild(deleteBtn);
+
         // Create and append book information elements
         const title = document.createElement('h3');
         title.textContent = book.name;
