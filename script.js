@@ -2,15 +2,31 @@ const myLibrary = [
 ];
 
 const addBookBtn = document.querySelector('.addBookBtn');
-const dialog = document.getElementById('myDialog');
+const form = document.getElementById('myDialog');
 const closeButton = document.querySelector('.close');
+let currentIndex = 0
 
 addBookBtn.addEventListener('click', () => {
-    dialog.showModal();
+    form.showModal();
 });
 
 closeButton.addEventListener('click', () => {
-    dialog.close();
+    form.close();
+});
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    let title = document.getElementById('title').value;
+    let author = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let read = document.getElementById('read').checked;
+    
+    myLibrary.push(new Book(title, author, pages, read));
+
+    currentIndex++;
+    closeDialog();
+    display();
 });
 
 function Book(name, author, pages, read) {
@@ -18,6 +34,7 @@ function Book(name, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.index = currentIndex;
 
   this.info = function() {
     return `${this.name} by ${this.author}, ${this.pages} pages, ${this.read ? 'read' : 'not read yet'}`;
