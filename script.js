@@ -1,6 +1,17 @@
 const myLibrary = [
-    new Book('The Hobbit', 'J.R.R. Tolkien', 295, true),
 ];
+
+const addBookBtn = document.querySelector('.addBookBtn');
+const dialog = document.getElementById('myDialog');
+const closeButton = document.querySelector('.close');
+
+addBookBtn.addEventListener('click', () => {
+    dialog.showModal();
+});
+
+closeButton.addEventListener('click', () => {
+    dialog.close();
+});
 
 function Book(name, author, pages, read) {
   this.name = name;
@@ -14,7 +25,7 @@ function Book(name, author, pages, read) {
 }
 
 function addBookToLibrary() {
-  // do stuff here
+  
 }
 
 function display() {
@@ -51,4 +62,3 @@ function display() {
 };
 
 display();
-console.log(myLibrary[0].book1.info());
