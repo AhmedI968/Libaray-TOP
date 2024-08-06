@@ -2,7 +2,7 @@ const myLibrary = [
 ];
 
 const addBookBtn = document.querySelector('.addBookBtn');
-const form = document.getElementById('myDialog');
+const form = document.querySelector('.dialog');
 const closeButton = document.querySelector('.close');
 let currentIndex = 0
 
@@ -66,10 +66,11 @@ function display() {
         
         // Create and append delete button
         const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Delete';
+        deleteBtn.textContent = 'X';
         deleteBtn.onclick = () => {
             removeBookFromLibrary(book.index);
         };
+        deleteBtn.className = 'deleteBtn';
         card.appendChild(deleteBtn);
 
         // Create and append book information elements
@@ -89,6 +90,15 @@ function display() {
         const readStatus = document.createElement('p');
         readStatus.textContent = `Status: ${book.read ? 'Read' : 'Not Read Yet'}`;
         card.appendChild(readStatus);
+
+        const readBtn = document.createElement('button');
+        readBtn.textContent = 'Update';
+        readBtn.onclick = () => {
+            book.read = !book.read;
+            display();
+        };
+        readBtn.className = 'readBtn';
+        card.appendChild(readBtn);
 
         // Append the card to the container
         library.appendChild(card);
