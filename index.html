@@ -1,45 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <div class="header">
-        <h1>Library</h1>
-        <button class="addBookBtn">Add Book</button>
+      <h1>Library</h1>
+      <button class="addBookBtn">Add Book</button>
     </div>
 
-        <dialog class="dialog">
-            <form class="addBookForm">
-                <div class="close-button">
-                    <button type="button" class="close">
-                        X
-                    </button>
-                </div>
-                <div class="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" id="title" required>
-                    <label for="author">Author</label>
-                    <input type="text" id="author" required>
-                    <label for="pages">Pages</label>
-                    <input type="number" id="pages" required>
-                    <div class="checkBox">
-                        <label for="read">Read</label>
-                        <input type="checkbox" id="read">
-                    </div>
-                </div>
-                <div class="submit-button">
-                    <button type="submit">Add</button>
-                </div>
-            </form>
-        </dialog>
+    <dialog class="dialog">
+      <form class="addBookForm">
+        <div class="close-button">
+          <button type="button" class="close">X</button>
+        </div>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input type="text" id="title" required minlength="1" />
+          <label for="author">Author</label>
+          <input type="text" id="author" required minlength="1" />
+          <label for="pages">Pages</label>
+          <input type="number" id="pages" required min="1" />
+          <div class="checkBox">
+            <label for="read">Read</label>
+            <input type="checkbox" id="read" />
+          </div>
+        </div>
+        <div class="submit-button">
+          <button type="submit">Add</button>
+        </div>
+      </form>
+    </dialog>
 
     <div class="library"></div>
 
     <!-- My Script -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
